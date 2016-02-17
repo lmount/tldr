@@ -1,19 +1,23 @@
 # strace
 
-> Troubleshooting tool for tracing system calls.
+> Trace system calls and signals.
 
-- Start tracing a specific process by its PID:
+- Basic tracing:
+
+`strace {{command}}`
+
+- Attach to a process:
 
 `strace -p {{pid}}`
 
-- Trace a process and filter output by system call:
+- Log output to a file:
 
-`strace -p {{pid}} -e {{system call name}}`
+`strace -o {{logfile}} {{command}}`
 
-- Count time, calls, and errors for each system call and report a summary on program exit:
+- Trace following children:
 
-`strace -p {{pid}} -c`
+`strace -f {{command}}`
 
-- Show the time spent in every system call:
+- Trace all open and read calls:
 
-`strace -p {{pid}} -T`
+`strace -e trace={{open,read}} {{command}}`
